@@ -82,5 +82,16 @@ public class Item {
 	public Category getCategory() {
 		return this.category;
 	}
+	
+	@Column(name = "STOCK")
+	private Integer stock;
+	
+	public Integer getStock() {
+		return this.stock;
+	}
+	
+	public void setStock(Integer stock) {
+		this.stock = stock;
+	}
 
 }

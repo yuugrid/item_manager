@@ -30,6 +30,7 @@ public class ItemService {
         item.setName(itemForm.getName());
         item.setPrice(itemForm.getPrice());
         item.setCategoryId(itemForm.getCategoryId());
+        item.setStock(0);
         return this.itemRepository.save(item);
     }
 	
@@ -56,4 +57,19 @@ public class ItemService {
 	public List<Item> findByDeletedAtIsNull() {
 		return this.itemRepository.findByDeletedAtIsNull();
 	}
+	
+	 public Item nyuka(Integer id, Integer inputValue) {
+	        Item item = this.findById(id);
+	        item.setStock(item.getStock() + inputValue);
+	        return this.itemRepository.save(item);
+	    }
+	
+	 public Item shukka(Integer id, Integer inputValue) {
+	        Item item = this.findById(id);
+	        if (inputValue <= item.getStock()) {
+	            item.setStock(item.getStock() - inputValue);
+	        }
+
+	        return this.itemRepository.save(item);
+	    }
 }
